@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Header />
+    <Header @toggle-drawer="toggleMenuDrawer" />
 
     <v-main>
       <v-container class="py-12"> 
@@ -59,20 +59,32 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'; // Necesario para 'menuDrawer'
 import Header from '@/components/Header.vue'
 import MenuSection from '@/components/MenuSection.vue' 
 import Cart from '@/components/Cart.vue'             
+// 💡 Casing Corregido: 'Composables'
 import { useScroll } from '@/Composables/useScroll' 
 
 const { scrollTo } = useScroll()
+
+// Variable para controlar el menú lateral (drawer)
+const menuDrawer = ref(false); 
+
+// Función llamada por el evento 'toggleDrawer' del Header
+const toggleMenuDrawer = () => {
+  menuDrawer.value = !menuDrawer.value;
+};
+
+// NOTA IMPORTANTE: El v-navigation-drawer debe ser implementado en App.vue o este mismo archivo (Home.vue)
+// para que el menú móvil funcione.
 </script>
 
 <style scoped>
-/* Elimina max-width de .section y deja que v-container lo maneje */
+/* Estilos que centran y dan formato al layout */
 .section {
-  padding: 40px 0; /* Ajusta el padding para v-container */
-  /* max-width: 1200px;  <-- ¡Eliminado! */
-  /* margin: 0 auto;    <-- ¡Eliminado! */
+  padding: 0 20px; 
+  margin: 0 auto;
 }
 .hero-section {
   height: 70vh;
@@ -80,7 +92,6 @@ const { scrollTo } = useScroll()
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* background-color: #f5f5f5; <-- Puedes añadir un fondo si quieres un contraste */
 }
 .hero-content .title {
   font-size: 3rem;
@@ -91,9 +102,9 @@ const { scrollTo } = useScroll()
   margin-top: 8px;
 }
 .section-title {
-  font-size: 2.5rem; /* Ajuste para que se vea más grande */
+  font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 30px;
-  text-align: center; /* Centrar títulos de sección */
+  text-align: center;
 }
 </style>
