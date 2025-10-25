@@ -49,27 +49,19 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-// 💡 Asegúrate de que las importaciones usen el alias @/data/menu
 import { menuCategories, menuProducts } from '@/data/menu' 
 import ProductCard from '@/components/ProductCard.vue' 
 import type { Product } from '@/data/menu'
 
-
-// Estado reactivo para la pestaña activa. 
-// Inicialización que toma el 'key' de la primera categoría si existe.
 const activeCategoryKey = ref(
-  menuCategories.length > 0 ? menuCategories[0].key : ''
+  menuCategories[0]?.key ?? ''
 ) 
 
 // Propiedad computada para filtrar los productos 
 const filteredProducts = computed<Product[]>(() => {
-  // Filtra la lista global de productos
+  // Filtra la lista global de productos basada en la pestaña activa
   return menuProducts.filter(
     (product) => product.category === activeCategoryKey.value
   )
 })
 </script>
-
-<style scoped>
-/* Estilos específicos si son necesarios */
-</style>

@@ -1,0 +1,1 @@
+{"root":["./src/main.ts","./src/composables/usescroll.ts","./src/data/menu.ts","./src/plugins/vuetify.ts","./src/stores/cartstore.ts","./src/app.vue","./src/components/cart.vue","./src/components/extramodal.vue","./src/components/header.vue","./src/components/menusection.vue","./src/components/productcard.vue","./src/views/home.vue"],"version":"5.9.3"}

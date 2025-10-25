@@ -62,7 +62,7 @@
 import Header from '@/components/Header.vue'
 import MenuSection from '@/components/MenuSection.vue' 
 import Cart from '@/components/Cart.vue'             
-import { useScroll } from '@/composables/useScroll' 
+import { useScroll } from '@/Composables/useScroll' 
 
 const { scrollTo } = useScroll()
 </script>

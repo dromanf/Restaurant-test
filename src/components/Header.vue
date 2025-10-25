@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { useScroll } from '@/composables/useScroll'
+import { useScroll } from '@/Composables/useScroll'
 
 const { scrollTo } = useScroll()
 </script>
